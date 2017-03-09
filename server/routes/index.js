@@ -8,4 +8,5 @@ module.exports = (app) => {
   app.get('/shelters/:id', ShelterController.listAnimals);
 
   app.post('/shelters/:shelterId/animals', AnimalController.create);
+  app.put('/shelters/:shelterId/animals/:id', AnimalController.update);
 };
