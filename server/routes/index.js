@@ -1,9 +1,11 @@
 // Require your controllers here
 const ShelterController = require("../controllers/shelter");
 const AnimalController = require("../controllers/animal");
+const UserController = require("../controllers/user");
 
 module.exports = (app) => {
-  // Add your routes here
+  app.post('/users', UserController.register);
+
   app.post('/shelters', ShelterController.create);
   app.get('/shelters/:id', ShelterController.listAnimals);
 
