@@ -5,6 +5,7 @@ const UserController = require("../controllers/user");
 
 module.exports = (app) => {
   app.post('/users', UserController.register);
+  app.post('/login', UserController.login);
 
   app.post('/shelters', ShelterController.create);
   app.get('/shelters/:id', ShelterController.listAnimals);
