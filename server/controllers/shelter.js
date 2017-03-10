@@ -3,6 +3,8 @@ const Animal = require("../models").Animal;
 
 module.exports = {
   create (req, res) {
+    console.log("The current user is ", req.user);
+
     Shelter.create({
       name: req.body.name,
       location: req.body.location

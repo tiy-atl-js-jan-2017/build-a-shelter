@@ -1,3 +1,6 @@
+// Require any middleware here.
+const middleware = require("../middleware");
+
 // Require your controllers here
 const ShelterController = require("../controllers/shelter");
 const AnimalController = require("../controllers/animal");
@@ -7,7 +10,7 @@ module.exports = (app) => {
   app.post('/users', UserController.register);
   app.post('/login', UserController.login);
 
-  app.post('/shelters', ShelterController.create);
+  app.post('/shelters', middleware.authenticate, ShelterController.create);
   app.get('/shelters/:id', ShelterController.listAnimals);
 
   app.post('/shelters/:shelterId/animals', AnimalController.create);

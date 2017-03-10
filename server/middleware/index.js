@@ -1,6 +1,6 @@
 const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
-const User = require("../models/user");
+const User = require("../models").User;
 
 module.exports = {
   authenticate (req, res, next) {
@@ -34,6 +34,7 @@ module.exports = {
       });
 
     } catch (e) {
+      console.log(e);
       // Token was garbage. Tell 'em so.
       res.status(401).send({ message: "Invalid token." });
     }
