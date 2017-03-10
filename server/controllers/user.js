@@ -29,12 +29,14 @@ module.exports = {
           return res.status(401).send({ message: "No such email or wrong password." });
         }
 
-        console.log(user.salt);
         var input = bcrypt.hashSync(req.body.password, user.salt);
-        console.log(`hashed input: ${input}, stored password: ${user.password}`);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id, name: user.name }, appSecrets.jwtSecret);
-          return res.status(200).send(token);
+          var json = {
+            user: user,
+            token: token
+          };
+          return res.status(200).send(json);
         } else {
           return res.status(401).send({ message: "No such email or wrong password." });
         }
