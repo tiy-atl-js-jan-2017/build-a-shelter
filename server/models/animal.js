@@ -6,6 +6,7 @@ module.exports = function(sequelize, DataTypes) {
     adopted: DataTypes.BOOLEAN,
     vaccinated: DataTypes.BOOLEAN,
     age: DataTypes.INTEGER,
+    photoUrl: DataTypes.STRING,
     shelterId: DataTypes.INTEGER
   }, {
     classMethods: {
