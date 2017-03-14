@@ -8,6 +8,7 @@ module.exports = {
       vaccinated: req.body.vaccinated,
       age: req.body.age,
       breed: req.body.breed,
+      photoUrl: req.body.photoUrl,
       shelterId: req.params.shelterId
     })
       .then(animal => res.status(201).send(animal))
