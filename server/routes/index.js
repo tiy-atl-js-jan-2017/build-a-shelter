@@ -10,7 +10,8 @@ module.exports = (app) => {
   app.post('/users', UserController.register);
   app.post('/login', UserController.login);
 
-  app.post('/shelters', middleware.authenticate, ShelterController.create);
+  // No auth today.
+  app.post('/shelters', ShelterController.create);
   app.get('/shelters/:id', ShelterController.listAnimals);
 
   app.post('/shelters/:shelterId/animals', AnimalController.create);
