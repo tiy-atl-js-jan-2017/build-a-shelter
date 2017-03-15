@@ -17,6 +17,7 @@ module.exports = (app) => {
   app.post('/login', UserController.login);
 
   // No auth today.
+  app.get('/shelters', ShelterController.listShelters);
   app.post('/shelters', ShelterController.create);
   app.get('/shelters/:id', ShelterController.listAnimals);
 

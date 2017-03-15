@@ -2,6 +2,12 @@ const Shelter = require("../models").Shelter;
 const Animal = require("../models").Animal;
 
 module.exports = {
+  listShelters (req, res) {
+    Shelter.findAll()
+      .then(shelters => res.status(200).send(shelters))
+      .catch(error => res.status(500).send(error));
+  },
+
   create (req, res) {
     console.log("The current user is ", req.user);
 
