@@ -19,7 +19,7 @@ module.exports = {
     Animal.findById(req.params.id)
       .then(animal => {
         animal.update(req.body, {
-          fields: ['name', 'adopted', 'vaccinated', 'shelterId'],
+          fields: ['name', 'adopted', 'vaccinated', 'shelterId', 'photoUrl'],
           where: {
             id: req.params.id
           }
