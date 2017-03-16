@@ -22,7 +22,8 @@ module.exports = {
   listAnimals (req, res) {
     Animal.findAll({
       where: {
-        shelterId: req.params.id
+        shelterId: req.params.id,
+        adopted: false
       }
     })
       .then(animals => res.status(200).send(animals))
