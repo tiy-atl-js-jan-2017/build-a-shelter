@@ -19,7 +19,7 @@ module.exports = (app) => {
   // No auth today.
   app.get('/shelters', ShelterController.listShelters);
   app.post('/shelters', middleware.authenticate, ShelterController.create);
-  app.get('/shelters/:id', ShelterController.listAnimals);
+  app.get('/shelters/:id', ShelterController.show);
 
   app.post('/shelters/:shelterId/animals', middleware.authenticate, AnimalController.create);
   app.put('/shelters/:shelterId/animals/:id', middleware.authenticate, AnimalController.update);

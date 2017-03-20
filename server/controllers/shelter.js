@@ -19,11 +19,15 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
-  listAnimals (req, res) {
-    Animal.findAll({
-      where: {
-        shelterId: req.params.id,
-        adopted: false
+  show (req, res) {
+    Shelter.findById(req.params.id, {
+      attributes: ['id', 'name', 'location'],
+      include: {
+        model: Animal,
+        attributes: ['id', 'name', 'breed', 'adopted', 'vaccinated', 'photoUrl'],
+        where: {
+          adopted: true
+        }
       }
     })
       .then(animals => res.status(200).send(animals))
