@@ -2,6 +2,7 @@ const User = require("../models").User;
 const bcrypt = require("bcryptjs");
 const jwt = require("jwt-simple");
 const appSecrets = require("../config/secrets");
+const _ = require("lodash");
 
 module.exports = {
   register (req, res) {
@@ -32,8 +33,11 @@ module.exports = {
         var input = bcrypt.hashSync(req.body.password, user.salt);
         if (input === user.password) {
           var token = jwt.encode({ id: user.id, name: user.name }, appSecrets.jwtSecret);
+          // could also say: `user: _.pick(user.get(), ['id', 'name', 'email']);`
           var json = {
-            user: user,
+            id: user.id,
+            name: user.name,
+            email: user.email,
             token: token
           };
           return res.status(200).send(json);
